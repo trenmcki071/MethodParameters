@@ -29,17 +29,20 @@ namespace MethodParameters
             CanVote(age);
 
             //get values for question 3 and send them to the WelcomeUser method
-
+            string username = userInput.Text;
+            string PIN = pinInput.Text;
+            WelcomeUser(username, PIN);
 
             //get value for question 4 and send it to the InchToCm method
-
+            int inches = Convert.ToInt32(inchesInput.Text);
+            InchToCm(inches);
 
         }
 
         /// 1. Create a method called Add, that accepts 2 int 
         /// parameters, x and y, adds them together, and then 
         /// displays the result.
-        /// 
+        ///
         /// Sample input and output:
         /// 
         /// Input: 4, 5
@@ -50,7 +53,8 @@ namespace MethodParameters
 
         public void Add(int x, int y)
         {
-
+            int addTotal = x + y;
+            q1Output.Text = $"The total is {addTotal}";
         }
 
         /// 2. Create a method called CanVote, that accepts an 
@@ -67,7 +71,14 @@ namespace MethodParameters
 
         public void CanVote(int voterAge)
         {
-
+            if (voterAge>17)
+            {
+                q2Output.Text = "You are old enough to vote";
+            }
+            else
+            {
+                q2Output.Text = "You are not old enough to vote";
+            }
         }
 
         /// 3. Create a method called WelcomeUser, that accepts 2
@@ -82,7 +93,18 @@ namespace MethodParameters
         /// 
         /// Input: Mr. T, 1234
         /// Welcome Mr. T
-
+        public void WelcomeUser(string name, string pin)
+        {
+            string correctPin = Convert.ToString(1234);
+            if(pin == correctPin)
+            {
+                q3Output.Text = $"Welcome, {name}";
+            }
+            else
+            {
+                q3Output.Text = "Incorrect pin";
+            }
+        }
 
 
         /// 4. Create a method called InchToCm, that accepts a double 
@@ -96,7 +118,11 @@ namespace MethodParameters
         /// 
         /// Input: 3.4
         /// 3.4 inches is 8.636 cms
-
+        public void InchToCm(double inches)
+        {
+            double cm = inches * 2.54;
+            q4Output.Text = $"{cm}";
+        }
 
 
     }
